@@ -11,7 +11,8 @@ class Botton_navig_ber extends StatefulWidget {
 class _Botton_navig_berState extends State<Botton_navig_ber> {
   var curntdex = 0;
   List curPage = [
-    chat_pages(),
+    chat_pages(
+    ),
     profile_pages(),
   ];
   @override

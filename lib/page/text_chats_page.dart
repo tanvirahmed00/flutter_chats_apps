@@ -1,5 +1,6 @@
 import 'package:chats_apps/model_class/send_and_recived.dart';
 import 'package:chats_apps/model_class/test_data.dart';
+import 'package:chats_apps/page/profile_page.dart';
 import 'package:chats_apps/provider/function_provider.dart';
 import 'package:chats_apps/widget/_custrom_appber.dart';
 import 'package:chats_apps/widget/_custrom_button.dart';
@@ -36,7 +37,9 @@ class _TextchatpageState extends State<Textchatpage> {
     Size size = MediaQuery.of(context).size;
     final Function_provider Providerdata = Provider.of<Function_provider>(context);
     return Scaffold(
-      appBar: custrom_appBerr(context,(){},(){},"${widget.name}","${widget.image}",Icons.phone,Icons.video_call),
+      appBar: custrom_appBerr(context,(){
+        Navigator.push(context, MaterialPageRoute(builder: (context) =>profile_pages()));
+      },(){},(){},"${widget.name}","${widget.image}",Icons.phone,Icons.video_call),
       body: SingleChildScrollView(
         reverse: true,
         child: Column(
@@ -60,39 +63,39 @@ class _TextchatpageState extends State<Textchatpage> {
           ],
         ),
       ),
-      bottomNavigationBar:Container(
-        width: size.width/1,
-        height: size.height/10,
-        color: Colors.white,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            custrom_button((){},Icons.attach_file,size.width/15,Colors.black),
-            custrom_button((){Providerdata.CameraImage();},Icons.camera_alt_outlined,size.width/15,Colors.black),
-            custrom_button((){Providerdata.GalleryImage();},Icons.image,size.width/15,Colors.black),
-            Container(
-              width: size.width/3  ,
-              height: size.height/20,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius:BorderRadius.circular(10)
-              ),
+     bottomSheet: Container(
+       width: size.width/1,
+       height: size.height/10,
+       color: Colors.white,
+       child: Row(
+         crossAxisAlignment: CrossAxisAlignment.center,
+         mainAxisAlignment: MainAxisAlignment.center,
+         children: [
+           custrom_button((){},Icons.attach_file,size.width/15,Colors.black),
+           custrom_button((){Providerdata.CameraImage();},Icons.camera_alt_outlined,size.width/15,Colors.black),
+           custrom_button((){Providerdata.GalleryImage();},Icons.image,size.width/15,Colors.black),
+           Container(
+             width: size.width/3  ,
+             height: size.height/20,
+             decoration: BoxDecoration(
+                 color: Colors.grey,
+                 borderRadius:BorderRadius.circular(10)
+             ),
 
-              child:TextField(
-                decoration: InputDecoration(
-                    prefixText: "Aa",
-                    border: InputBorder.none,
-                    focusColor: Colors.white,
-                    hoverColor: Colors.red,
-                    fillColor: Colors.white),
-              ),
-            ),
-            custrom_button((){},Icons.send_sharp,size.width/15,Colors.black),
+             child:TextField(
+               decoration: InputDecoration(
+                   prefixText: "Aa",
+                   border: InputBorder.none,
+                   focusColor: Colors.white,
+                   hoverColor: Colors.red,
+                   fillColor: Colors.white),
+             ),
+           ),
+           custrom_button((){},Icons.send_sharp,size.width/15,Colors.black),
 
-          ],
-        ),
-      ) ,
+         ],
+       ),
+     ) ,
     );
   }
   Widget custrom_text(index){
@@ -141,7 +144,9 @@ class _TextchatpageState extends State<Textchatpage> {
                       borderRadius: BorderRadius.circular(20)
                   ),
                 ),
-              ), )
+              ), ),
+
+
             ],
           ),
     );

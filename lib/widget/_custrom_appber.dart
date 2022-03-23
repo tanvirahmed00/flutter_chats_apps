@@ -1,19 +1,19 @@
 import 'package:chats_apps/page/profile_page.dart';
 import 'package:flutter/material.dart';
-PreferredSizeWidget custrom_appBerr(context,function1,function2,String txt,String image,icons1,icons2){
+PreferredSizeWidget custrom_appBerr(context,image_fun,function1,function2,String txt,String image,icons1,icons2){
 
   return AppBar(
     backgroundColor: Colors.white,
     title: Text(txt,style: TextStyle(fontWeight: FontWeight. bold ,fontSize: 30,color: Colors.black),),
     leading: InkWell(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) =>profile_pages()));
-      },
+      onTap: image_fun,
       child:Container(
         padding: EdgeInsets.only(left: 10,),
         child: CircleAvatar(
           radius: 60,
-          backgroundImage:AssetImage(image),
+          backgroundImage:
+          NetworkImage(image),
+          backgroundColor: Colors.transparent,
         ),
       ) ,
     ),

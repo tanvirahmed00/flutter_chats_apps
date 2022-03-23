@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 Widget CustomCard (String image,String name,String txt){
   return ListTile(
@@ -5,7 +6,9 @@ Widget CustomCard (String image,String name,String txt){
     subtitle:Text(txt),
     leading:CircleAvatar(
     radius: 30,
-    backgroundImage:AssetImage(image),
+      backgroundImage:
+      NetworkImage(image),
+      backgroundColor: Colors.transparent,
   ),
     trailing: Icon(Icons.access_time_sharp),
     
