@@ -37,9 +37,9 @@ class _TextchatpageState extends State<Textchatpage> {
     Size size = MediaQuery.of(context).size;
     final Function_provider Providerdata = Provider.of<Function_provider>(context);
     return Scaffold(
-      appBar: custrom_appBerr(context,(){
-        Navigator.push(context, MaterialPageRoute(builder: (context) =>profile_pages()));
-      },(){},(){},"${widget.name}","${widget.image}",Icons.phone,Icons.video_call),
+      appBar:apppber(),
+      //
+
       body: SingleChildScrollView(
         reverse: true,
         child: Column(
@@ -98,6 +98,17 @@ class _TextchatpageState extends State<Textchatpage> {
      ) ,
     );
   }
+  PreferredSizeWidget apppber(){
+    return
+
+
+      custrom_appBerr(context,(){
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>profile_pages(
+
+
+      )));
+    },(){},(){},"${widget.name}","images/profile.jpg",Icons.phone,Icons.video_call);
+  }
   Widget custrom_text(index){
     Size size = MediaQuery.of(context).size;
     return InkWell(
@@ -109,7 +120,7 @@ class _TextchatpageState extends State<Textchatpage> {
                 padding: EdgeInsets.only(left: 10,),
                 child: CircleAvatar(
                   radius: 15,
-                  backgroundImage:AssetImage('${widget.image}'),
+                  backgroundImage:NetworkImage('${widget.image}'),
                 ),
               ) , ),
               Positioned(

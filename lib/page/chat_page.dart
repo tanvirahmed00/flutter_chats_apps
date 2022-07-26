@@ -10,13 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class chat_pages extends StatefulWidget {
-  String? iamge;
+  String? image;
   String? name;
 
   @override
   State<chat_pages> createState() => _chat_pagesState();
 
-  chat_pages({this.iamge, this.name});
+  chat_pages({this.image, this.name});
 }
 
 class _chat_pagesState extends State<chat_pages> {
@@ -43,12 +43,11 @@ class _chat_pagesState extends State<chat_pages> {
       ///custrom apper call kora hoice
      appBar: custrom_appBerr(context,(){
        Navigator.push(context, MaterialPageRoute(builder: (context) =>profile_pages(
-
        )));
      },(){
        Providerdata.CameraImage();
        // images/5.jpg
-     },(){},"Chats","images/5.jpg",Icons.camera_alt_outlined,Icons.edit),
+     },(){},"Chats","images/profile.jpg",Icons.camera_alt_outlined,Icons.edit),
       body:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -87,7 +86,6 @@ class _chat_pagesState extends State<chat_pages> {
           Navigator.push(context, MaterialPageRoute(builder: (context) =>Textchatpage(
             image:User_List[index].image,
             name:User_List[index].name,
-
           )));
         },
       child: CustomCard("${User_List[index].image}","${User_List[index].name}","${User_List[index].send}"),

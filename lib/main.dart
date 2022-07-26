@@ -1,5 +1,5 @@
 
-import 'package:chats_apps/page/chat_page.dart';
+
 import 'package:chats_apps/page/login_page.dart';
 import 'package:chats_apps/provider/auth_provider.dart';
 import 'package:chats_apps/provider/function_provider.dart';
@@ -44,13 +44,6 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         home:Login_page(),
       )
-
     );
-
-
-    //   MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   home: Botton_navig_ber(),
-    // )
   }
 }

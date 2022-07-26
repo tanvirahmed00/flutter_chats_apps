@@ -1,4 +1,6 @@
+import 'package:chats_apps/model_class/send_and_recived.dart';
 import 'package:chats_apps/page/botton_navigation_ber.dart';
+import 'package:chats_apps/page/chat_page.dart';
 import 'package:chats_apps/page/registration_page.dart';
 import 'package:chats_apps/provider/auth_provider.dart';
 import 'package:chats_apps/provider/function_provider.dart';
@@ -15,11 +17,23 @@ class Login_page extends StatefulWidget {
 class _Login_pageState extends State<Login_page> {
   final _formKey = GlobalKey<FormState>();
   bool _isObscure = true;
+  List <Send_and_recived_models> UserListByCategory=[];
+
+  int count=0;
+  void _custominitState(auth_provider){
+    setState(() {
+      count++;
+    }
+    );
+    UserListByCategory=auth_provider.UserListByCategory;
+    auth_provider.getuserByCategory('p@gmail.com');
+  }
   @override
   Widget build(BuildContext context) {
     final Function_provider Providerdata = Provider.of<Function_provider>(context);
     final Auth_provider auth_provider = Provider.of<Auth_provider>(context);
     Size size = MediaQuery.of(context).size;
+    if(count==0) _custominitState(auth_provider);
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -111,7 +125,9 @@ class _Login_pageState extends State<Login_page> {
                                       content: Text(
                                         'Successfully Login',
                                       )));
-                                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Botton_navig_ber()));
+                                  Navigator.push(context,MaterialPageRoute(builder: (context)=>chat_pages(
+
+                                  )));
                                 }
                               } catch(e){
                                 print('error caught:$e');

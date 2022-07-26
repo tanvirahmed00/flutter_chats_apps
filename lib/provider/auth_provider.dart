@@ -12,6 +12,8 @@ class Auth_provider extends Function_provider{
   Send_and_recived_models __facultyModels=Send_and_recived_models();
   List<Send_and_recived_models> userlist=[];
   List<Send_and_recived_models> get User_List => userlist;
+  List<Send_and_recived_models> userListbycategory = [];
+  List<Send_and_recived_models> get UserListByCategory => userListbycategory;
 
   Send_and_recived_models get facultyModel => __facultyModels;
   set facultyModel(Send_and_recived_models model) {
@@ -82,7 +84,6 @@ class Auth_provider extends Function_provider{
       });
     });
   }
-
   Future<void> getuserList(
       String collection,
       ) async {
@@ -110,4 +111,30 @@ class Auth_provider extends Function_provider{
     }
   }
 
+
+  Future<void> getuserByCategory(String email) async {
+    //final String id = await getPreferenceId();
+    try {
+      await FirebaseFirestore.instance
+          .collection('user')
+          .where(email, isEqualTo: "p@gmail.com")
+          .get()
+          .then((snapShot) {
+        userListbycategory.clear();
+        snapShot.docChanges.forEach((element) {
+          print("Length: " + userListbycategory.length.toString());
+          Send_and_recived_models productModels = Send_and_recived_models(
+            name: element.doc['name'],
+            image: element.doc['image'],
+            email: element.doc['email'],
+          );
+          userListbycategory.add(productModels);
+        });
+      });
+      print("Length: " + userListbycategory.length.toString());
+      notifyListeners();
+    } catch (error) {
+      error.toString();
+    }
+  }
 }

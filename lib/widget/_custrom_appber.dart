@@ -1,4 +1,5 @@
-import 'package:chats_apps/page/profile_page.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 PreferredSizeWidget custrom_appBerr(context,image_fun,function1,function2,String txt,String image,icons1,icons2){
 
@@ -12,7 +13,7 @@ PreferredSizeWidget custrom_appBerr(context,image_fun,function1,function2,String
         child: CircleAvatar(
           radius: 60,
           backgroundImage:
-          NetworkImage(image),
+          AssetImage(image),
           backgroundColor: Colors.transparent,
         ),
       ) ,
